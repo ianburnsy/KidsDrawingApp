@@ -3,6 +3,7 @@ package uk.co.thechange.kidsdrawingapp
 import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
+import android.util.TypedValue
 import android.view.MotionEvent
 import android.view.View
 
@@ -42,7 +43,8 @@ class DrawingView(context: Context, attrs: AttributeSet) : View(context, attrs) 
         mDrawPaint!!.strokeJoin = Paint.Join.ROUND
         mDrawPaint!!.strokeCap = Paint.Cap.ROUND // look at the difference.
         mCanvasPaint = Paint(Paint.DITHER_FLAG)
-        mBrushSize = 20.toFloat()
+        // don't need the below any more because setting up in the main activity.
+    //mBrushSize = 20.toFloat()
 
     }
 // when the screen is created the view gets inflated and calls this funciton.
@@ -101,6 +103,14 @@ class DrawingView(context: Context, attrs: AttributeSet) : View(context, attrs) 
         }
         invalidate()
         return true
+    }
+
+    // making this a public function so it can be used in the main activity.
+    fun setSizeForBrush(newSize:Float){
+        mBrushSize = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, // adjusting to size of display.
+        newSize,resources.displayMetrics
+            )
+        mDrawPaint!!.strokeWidth = mBrushSize
     }
 
 

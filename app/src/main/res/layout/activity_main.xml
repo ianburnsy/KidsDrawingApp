@@ -5,44 +5,60 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
-    <Button
-        android:id="@+id/btnCameraPermission"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="REQUEST CAMERA PERMISSION"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        >
-    </Button>
+
     <FrameLayout
         android:id="@+id/fl_drawing_view_container"
-        android:layout_height="0dp"
         android:layout_width="0dp"
-        android:padding="1dp"
+        android:layout_height="0dp"
+        android:layout_margin="5dp"
         android:background="@drawable/background_drawing_view_layout"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:padding="2dp"
+        app:layout_constraintBottom_toTopOf="@id/ib_pen"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
 
-        <ImageView
-            android:id="@+id/iv_background"
-            android:layout_width="601dp"
-            android:layout_height="match_parent"
-            android:src="@drawable/image"></ImageView>
 
         <uk.co.thechange.kidsdrawingapp.DrawingView
             android:id="@+id/drawing_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="700dp"></uk.co.thechange.kidsdrawingapp.DrawingView>
+            app:layout_constraintTop_toTopOf="parent">
+        </uk.co.thechange.kidsdrawingapp.DrawingView>
+
 
     </FrameLayout>
 
+    <LinearLayout
+        android:id="@+id/ll_paint_colors"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fl_drawing_view_container">
+        <ImageButton
+            android:id="@+id/ib_pen"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="5dp"
+/>
+        <ImageButton
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_margin="2dp"
+        android:background="@color/white"
+        >
+    </ImageButton>
+    </LinearLayout>
+
+
+
+    <ImageView
+        android:id="@+id/iv_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/image">
+    </ImageView>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -103,6 +103,20 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+       drawingView = findViewById(R.id.drawing_view) // the xml drawing view we created.
+        // or could of used databinding.
+
+        drawingView?.setSizeForBrush(5.toFloat())
+
+        val ib_brush : ImageButton = findViewById(R.id.ib_pen) // not a button but an image button
+        ib_brush.setOnClickListener{
+            showBrushSizeChoserDialog()
+        }
+
+
+
+
+    /*
         val btnCameraPermission: Button = findViewById(R.id.btnCameraPermission)
         btnCameraPermission.setOnClickListener{
             if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.M &&
@@ -116,8 +130,24 @@ class MainActivity : AppCompatActivity() {
                 )
             }
         }
+        */
+
+
+
 
     }
+    // SHOWING BRUSH SIZE CHOOSER
+    private fun showBrushSizeChoserDialog(){
+        val brushDialog = Dialog(this)
+        brushDialog.setContentView(R.layout.dialog_brush_size)
+        brushDialog.setTitle("Brush size: ")
+        val smallBtn: ImageButton = brushDialog.findViewById(R.id.ib_small_brush) // why is this not working???
+        smallBtn.setOnClickListener {
+            drawingView?.setSizeForBrush(5.toFloat())
+            brushDialog.dismiss()
+        }
+    }
+
     /*
     * THIS SECTION IS WITHIN THE MAIN ACTIVITY CLASS BUT OUTSIDE THE ON CREATE FUNCTION
     * IT HAS TO BE IN THE MAIN ACTIVITY CLASS OR IT CANNOT FIND THE CONTECT FOR "THIS"
